@@ -15,9 +15,12 @@ function BusinessAnalyst(name) {
   this.type="Business Analyst"
 }
 
-function Introduce(){
-  // console.log("Hi I'm: " + this.name + " and I'm a " + this.type);
-  console.log(`Hi, I'm ${this.name} and I'm a ${this.type}`);
+function Introduce(company, location){
+  console.log(`Hi, I'm ${this.name} and I'm a ${this.type} ${company} ${location}`);
+}
+
+function IntroduceNew(list){
+  console.log(`Hi, I'm ${this.name} and I'm a ${this.type} ${list.company} ${list.location}`);
 }
 
 function EmployeeFactory(){
@@ -45,5 +48,9 @@ employees.push(employeeFactory.create("Vibhor", 2));
 employees.push(employeeFactory.create("Parag", 3));
 
 employees.forEach(emp => {
-  Introduce.call(emp);
+  Introduce.call(emp, "from company pvt ltd", "Mumbai");
+})
+console.log("======================");
+employees.forEach(emp => {
+  IntroduceNew.apply(emp, [{"company": "from company pvt ltd", "location": "Mumbai"}]);
 })
